@@ -1,0 +1,15 @@
+html, body, ul, li{
+    margin: 40px;
+}
+
+input[type=button] {
+    width: 30px;  height: 30px;
+    background-color: transparent;
+    border: 1px solid black;
+    margin-bottom: 4px;
+    
+}
+
+.calc{
+    margin-left: 153px;
+}
