@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        <h2>Hello, {{ name }}</h2>
+        <input type="text" v-model="name">
+        <button @click="name = ''" :disabled="name.length === 0">X</button>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        let { createApp } = Vue;
+        let app = createApp({
+            data(){
+                return {
+                    name: ''
+                }
+            }
+        });
+
+        app.mount('.app');
+    </script>
+</body>
+</html>
