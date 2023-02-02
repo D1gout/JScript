@@ -1,15 +1,18 @@
 window.onload = function(e){
 
-    var slider = new Slider({
+    new Slider({
         images: '.gallery-1 .photos img',
         btnPrev: '.gallery-1 .buttons .prev',
         btnNext: '.gallery-1 .buttons .next',
         auto: false
     });
 
-    var slider2 = new Slider({
+    new Slider({
         images: '.gallery-2 .photos img',
-        auto: true
+        btnPrev: '.gallery-2 .buttons .prev',
+        btnNext: '.gallery-2 .buttons .next',
+        auto: true,
+        rate: 300
     });
 }
 
@@ -18,7 +21,12 @@ function Slider(param){
     this.auto = param.auto;
     var slider = this;
 
-    i = 0;
+    this.rate = param.rate || 1000;
+
+    this.btnNext = param.btnNext;
+    this.btnPrev = param.btnPrev;
+
+    var i = 0;
 
     this.prev = function(){
         slider.images[i].classList.remove('showed');
@@ -42,14 +50,11 @@ function Slider(param){
         slider.images[i].classList.add('showed');
     }
 
-    if (param.btnNext != null){
-        document.querySelector(param.btnNext).onclick = this.prev;
-    }
-    else if (param.btnPrev != null){
-        document.querySelector(param.btnPrev).onclick = this.next;
-    }
+    document.querySelector(slider.btnNext).onclick = slider.prev;
+    
+    document.querySelector(slider.btnPrev).onclick = slider.next;
 
-    if (this.auto){
-        setInterval(this.next, 1000);
+    if (slider.auto){
+        setInterval(slider.next, slider.rate);
     }
 }

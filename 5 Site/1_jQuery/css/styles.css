@@ -1,0 +1,12 @@
+html, body, ul, li{
+    margin: 10em;
+    padding-left: 200px;
+}
+
+.err{
+    outline: 2px solid red;
+}
+
+.focus{
+    box-shadow: 0 0 5px #ff0;
+}

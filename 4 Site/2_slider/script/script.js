@@ -1,7 +1,7 @@
 window.onload = function(e){
 
     var images = document.querySelectorAll('.gallery-1 .photos img');
-    console.log(images)
+
     var slider = new Slider(images);
 
     document.querySelector('.gallery-1 .buttons .prev').onclick = function(){
