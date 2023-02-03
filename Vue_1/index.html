@@ -7,22 +7,57 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="app">
-        <h2>Hello, {{ name }}</h2>
-        <input type="text" v-model="name">
-        <button @click="name = ''" :disabled="name.length === 0">X</button>
-    </div>
+    <div class="app"></div>
     <script src="https://unpkg.com/vue"></script>
     <script>
+        /*
+        v-model
+            v-bind
+            v-on
+
+        v-bind
+        v-on
+        v-if
+        v-else
+        v-show
+        ...
+
+        name = '';
+        input.value = '';
+
+        input.addEventListener('input', $event => {
+            name = $event.target.value;
+        })
+        */
         let { createApp } = Vue;
-        let app = createApp({
+        let rootComponent = {
+            template: `
+                <input type="text" v-model="name">
+                <button v-on:click="cleanName" v-bind:disabled="!nameFilled">X</button>
+                <div v-show="nameFilled">
+                    <h2>Hello, {{ name }}</h2>
+                    <button><h3>Перейти к следующиму шагу</h3></button>
+                </div>
+            `,
             data(){
                 return {
                     name: ''
                 }
-            }
-        });
+            },
+            computed: {
+                nameFilled(){
+                    return this.name.length > 0;
+                }
 
+            },
+            methods: {
+                cleanName(){
+                    this.name = '';
+                }
+            }
+        };
+        
+        let app = createApp(rootComponent);
         app.mount('.app');
     </script>
 </body>
